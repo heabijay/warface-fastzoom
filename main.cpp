@@ -3,7 +3,7 @@
 #include <thread>
 #include <iostream>
 #include <windows.h>
-#include "logger.cpp"
+#include "logger.h"
 
 using namespace std;
 
