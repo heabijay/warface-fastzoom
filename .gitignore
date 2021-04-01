@@ -1,0 +1,6 @@
+# IDE and editors
+.vscode/
+
+# Libraries and executable
+*.dll
+*.exe
