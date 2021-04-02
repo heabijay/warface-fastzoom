@@ -1,6 +1,9 @@
 # IDE and editors
 .vscode/
 
+# Configs
+*.ini
+
 # Executable
 *.exe
 
