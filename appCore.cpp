@@ -58,7 +58,7 @@ void AppCore::onRButtonChange(bool isDown) {
     if (isDown) {
         rButtonPressedStart = std::chrono::system_clock::now();
     } 
-    else {
+    else { // TODO: It's only for hold type shooting. Make variable for click type shooting.
         if (LButtonState != MButtonState)
             setMButtonState(LButtonState);
     }
