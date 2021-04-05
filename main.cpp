@@ -19,8 +19,40 @@ void keyboardChecker()
             AppCore::Start(0);
         }
 
-        if ((GetAsyncKeyState(VK_NUMPAD1) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 50)) {
-            AppCore::Start(50);
+        if ((GetAsyncKeyState(VK_NUMPAD1) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 80)) {
+            AppCore::Start(80);
+        }
+
+        if ((GetAsyncKeyState(VK_NUMPAD2) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 120)) {
+            AppCore::Start(120);
+        }
+
+        if ((GetAsyncKeyState(VK_NUMPAD3) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 130)) {
+            AppCore::Start(130);
+        }
+
+        if ((GetAsyncKeyState(VK_NUMPAD4) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 140)) {
+            AppCore::Start(140);
+        }
+
+        if ((GetAsyncKeyState(VK_NUMPAD5) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 150)) {
+            AppCore::Start(150);
+        }
+
+        if ((GetAsyncKeyState(VK_NUMPAD6) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 170)) {
+            AppCore::Start(170);
+        }
+
+        if ((GetAsyncKeyState(VK_NUMPAD7) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 180)) {
+            AppCore::Start(180);
+        }
+
+        if ((GetAsyncKeyState(VK_NUMPAD8) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 190)) {
+            AppCore::Start(190);
+        }
+
+        if ((GetAsyncKeyState(VK_NUMPAD9) & 0x8000) && (!AppCore::IsRunning() || AppCore::GetDelay() != 200)) {
+            AppCore::Start(200);
         }
 
         if (GetAsyncKeyState(VK_END) & 0x8000) {
