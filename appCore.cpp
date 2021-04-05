@@ -9,6 +9,7 @@ bool AppCore::isActive = false;
 HHOOK AppCore::hMouseHook;
 std::thread AppCore::mHookerThread;
 std::thread AppCore::clickThread;
+static constexpr std::chrono::duration<double> MinSleepDuration(0);
 
 std::mutex AppCore::clickMtx;
 std::condition_variable AppCore::clickRefresh;
@@ -23,6 +24,26 @@ void AppCore::setMButtonState(bool isDown) {
     mouse_event(isDown ? MOUSEEVENTF_MIDDLEDOWN : MOUSEEVENTF_MIDDLEUP, 0, 0, 0, 0);
 }
 
+BOOLEAN AppCore::nanosleep(LONGLONG ns) {
+    HANDLE timer;
+    LARGE_INTEGER li;
+
+    if(!(timer = CreateWaitableTimer(NULL, TRUE, NULL)))
+        return FALSE;
+
+    li.QuadPart = -ns;
+
+    if(!SetWaitableTimer(timer, &li, 0, NULL, NULL, FALSE)){
+        CloseHandle(timer);
+        return FALSE;
+    }
+
+    WaitForSingleObject(timer, INFINITE);
+    CloseHandle(timer);
+
+    return TRUE;
+}
+
 void AppCore::onLButtonChange(bool isDown) {
     if (delayMs == 0) {
         setMButtonState(LButtonState);
@@ -35,11 +56,24 @@ void AppCore::onLButtonChange(bool isDown) {
         } 
         else {
             std::thread([](){
-                std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+                // ! METHOD 1
+                // std::chrono::system_clock::time_point now = std::chrono::high_resolution_clock::now();
+                // std::chrono::milliseconds duration = std::chrono::duration_cast<std::chrono::milliseconds>(now - rButtonPressedStart);
+                // int cDuration = duration.count();
+                // if (cDuration < delayMs)
+                //     std::this_thread::sleep_for(std::chrono::milliseconds(delayMs - cDuration));
+
+                // ! METHOD 2
+                // while ((std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - rButtonPressedStart)).count() < delayMs) {
+                //     std::this_thread::sleep_for(MinSleepDuration);
+                // }
+
+                // ! METHOD 3
+                std::chrono::system_clock::time_point now = std::chrono::high_resolution_clock::now();
                 std::chrono::milliseconds duration = std::chrono::duration_cast<std::chrono::milliseconds>(now - rButtonPressedStart);
                 int cDuration = duration.count();
                 if (cDuration < delayMs)
-                    std::this_thread::sleep_for(std::chrono::milliseconds(delayMs - cDuration));
+                    nanosleep((delayMs - cDuration) * 10000);
 
                 if (LButtonState != MButtonState)
                     setMButtonState(LButtonState);
@@ -56,7 +90,7 @@ void AppCore::onRButtonChange(bool isDown) {
         return;
 
     if (isDown) {
-        rButtonPressedStart = std::chrono::system_clock::now();
+        rButtonPressedStart = std::chrono::high_resolution_clock::now();
     } 
     else { // TODO: It's only for hold type shooting. Make variable for click type shooting.
         if (LButtonState != MButtonState)
@@ -133,7 +167,7 @@ void AppCore::Init() {
 }
 
 void AppCore::Start() {
-    logger("AppCore::Start", "Work Continue");
+    logger("AppCore::Start", "Working");
     isActive = true;
 }
 

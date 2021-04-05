@@ -34,6 +34,7 @@ private:
 protected:
     static void onLButtonChange(bool isDown);
     static void onRButtonChange(bool isDown);
+    static BOOLEAN nanosleep(LONGLONG ns);
 public:
     static void Init();
     static void Start();
