@@ -82,7 +82,7 @@ void AppSettings::Serialize(std::ostream& toStream, struct Settings settings) {
 }
 
 bool AppSettings::tryReadHeader(std::string in, std::string& out) {
-	int size = in.size(); // TODO: REPLACE WITH TRIM 
+	int size = in.size();
 	if (in.rfind('[', 0) != 0)
 		return false;
 
