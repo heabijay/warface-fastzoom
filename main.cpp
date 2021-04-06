@@ -50,6 +50,9 @@ void keyboardChecker()
 
 int main(int argc, char **argv)
 {
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+
     std::ifstream f(filename);
     bool settingsSuccess = false;
     if (f.good()) {
