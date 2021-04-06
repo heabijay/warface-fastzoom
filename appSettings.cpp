@@ -72,7 +72,7 @@ void AppSettings::Serialize(std::ostream& toStream, struct Settings settings) {
 		appendLine(toStream);
 
 		append(toStream, "NUMPAD_");
-		append(toStream, i+1);
+		append(toStream, i);
 		append(toStream, "_DELAY");
 		append(toStream, '=');
 		append(toStream, (int)settings.binds[i].delay);
