@@ -23,20 +23,20 @@ void keyboardChecker()
 
         for (i = 0; i < 10; i++) {
             if (GetAsyncKeyState(VK_NUMPAD0 + i) & 0x8000) {
-                if (!AppCore::IsRunning() || AppCore::GetDelay() != settings.binds[i].delay) {
-                    if (settings.binds[i].name.size() > 0) {
-                        AppCore::Start(settings.binds[i].delay);
-                        logger(
-                            "keyboardChecker", 
-                            string("Activated Profile #") + 
-                                string(to_string(i)) + 
-                                string(": ") + 
-                                settings.binds[i].name + 
-                                string(" (") + 
-                                string(to_string(settings.binds[i].delay)) + 
-                                string("ms)")
-                            );
-                    }
+                if (settings.binds[i].name.size() > 0) {
+                    AppCore::Start(settings.binds[i].delay);
+                    logger(
+                        "keyboardChecker", 
+                        string("Activated Profile #") + 
+                            string(to_string(i)) + 
+                            string(": ") + 
+                            settings.binds[i].name + 
+                            string(" (") + 
+                            string(to_string(settings.binds[i].delay)) + 
+                            string("ms)")
+                        );
+                    
+                    while (GetAsyncKeyState(VK_NUMPAD0 + i) & 0x8000) { }
                 }
             }
         }
