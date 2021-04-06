@@ -167,7 +167,7 @@ void AppCore::Init() {
 }
 
 void AppCore::Start() {
-    logger("AppCore::Start", "Working");
+    // logger("AppCore::Start", "Working");
     isActive = true;
 }
 
@@ -182,7 +182,7 @@ bool AppCore::IsRunning() {
 
 void AppCore::Suspend() {
     isActive = false;
-    logger("AppCore::Suspend", "Work Suspend");
+    // logger("AppCore::Suspend", "Work Suspend");
 }
 
 void AppCore::Dispose() {
@@ -196,7 +196,7 @@ void AppCore::Dispose() {
 
 void AppCore::SetDelay(int delayMs) {
     AppCore::delayMs = delayMs;
-    logger("AppCore::SetDelay", std::string("Delay set: ") + std::to_string(delayMs));
+    // logger("AppCore::SetDelay", std::string("Delay set: ") + std::to_string(delayMs));
 }
 
 int AppCore::GetDelay() {

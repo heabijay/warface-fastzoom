@@ -1,1 +1,1 @@
-g++ -static -static-libgcc -static-libstdc++ main.cpp logger.cpp appCore.cpp appSettings.cpp logger.h appCore.h appSettings.h -o warface-fastzoom.exe
+g++ -static -static-libgcc -static-libstdc++ main.cpp logger.cpp stringSplit.cpp stringTrim.cpp appCore.cpp appSettings.cpp logger.h stringSplit.h stringTrim.h appCore.h appSettings.h -o warface-fastzoom.exe
