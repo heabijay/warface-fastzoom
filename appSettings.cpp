@@ -65,7 +65,7 @@ void AppSettings::Serialize(std::ostream& toStream, struct Settings settings) {
 
 	for (int i = 0; i < bindsCount; i++) {
 		append(toStream, "NUMPAD_");
-		append(toStream, i+1);
+		append(toStream, i);
 		append(toStream, "_NAME");
 		append(toStream, '=');
 		append(toStream, settings.binds[i].name);
