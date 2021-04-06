@@ -35,11 +35,14 @@ struct AppSettings::Settings AppSettings::Settings::ProvideDefault() {
 	s.binds[1].name = "Steyr Scout";
 	s.binds[1].delay = 80;
 
-	s.binds[2].name = "SAP6";
-	s.binds[2].delay = 50;
+	s.binds[2].name = "AT308";
+	s.binds[2].delay = 120;
 
-	s.binds[3].name = "CheyTac M200";
-	s.binds[3].delay = 200;
+	s.binds[3].name = "ОРСИС Т-5000";
+	s.binds[3].delay = 140;
+
+	s.binds[4].name = "CheyTac M200";
+	s.binds[4].delay = 200;
 
 	return s;
 }
