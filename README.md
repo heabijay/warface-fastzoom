@@ -1,6 +1,10 @@
 # warface-fastzoom
 
+<<<<<<< HEAD
 Should be the sniper's best friend.
+=======
+This application clones your clicks to a different button with await delay while you fastzooms.
+>>>>>>> 8177c7b... README.md another grammar correction
 
 ## Quick Guide
 
