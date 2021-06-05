@@ -1,10 +1,6 @@
 # warface-fastzoom
 
-<<<<<<< HEAD
-Should be the sniper's best friend.
-=======
 This application clones your clicks to a different button with await delay while you fastzooms.
->>>>>>> 8177c7b... README.md another grammar correction
 
 ## Quick Guide
 
@@ -43,7 +39,5 @@ This application clones your clicks to a different button with await delay while
 ## Safety
 
 The app doesn't inject into the game and doesn't interact with it. App just emulating mouse click. So it looks safe.
-
-But I guess, If a lot of people start using this solution, they could do something to block the work of this app.
 
 So, **use this program for your own risks**.
